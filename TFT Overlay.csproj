@@ -107,6 +107,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -130,6 +134,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AutoUpdater.cs" />
+    <Compile Include="CustomCursor.cs" />
+    <Compile Include="ProcessHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RadioConverter.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Utilities\CommandRunner.cs" />
+    <Compile Include="Version.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -145,19 +160,78 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resource\Charts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\ClassOrigins.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resource\Items.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\ItemsDefault.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\ItemsTextless.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_en-US.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_es-AR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_es-MX.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_fr-FR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_it-IT.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_JA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_PL.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_RU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_vi-VN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_zh-CN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resource\Localization\ItemStrings_zh-TW.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -178,7 +252,7 @@
     <Resource Include="Font\Cabin-SemiBoldItalic.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
@@ -332,30 +406,83 @@
     <Resource Include="Images\champs\KhaZix-Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\cstyle\Belt.png" />
-    <Resource Include="Images\cstyle\BF.png" />
-    <Resource Include="Images\cstyle\blade_of_the_ruined_king.png" />
-    <Resource Include="Images\cstyle\Bow.png" />
-    <Resource Include="Images\cstyle\Cape.png" />
-    <Resource Include="Images\cstyle\darkin.png" />
-    <Resource Include="Images\cstyle\force_of_nature.png" />
-    <Resource Include="Images\cstyle\frozen_mallet.png" />
-    <Resource Include="Images\cstyle\knights_vow.png" />
-    <Resource Include="Images\cstyle\Rod.png" />
-    <Resource Include="Images\cstyle\runaans_hurricane.png" />
-    <Resource Include="Images\cstyle\Spatula.png" />
-    <Resource Include="Images\cstyle\Tear.png" />
-    <Resource Include="Images\cstyle\Vest.png" />
-    <Resource Include="Images\cstyle\youmuus_ghostblade.png" />
-    <Resource Include="Images\cstyle\yuumi.png" />
+    <Resource Include="Images\cstyle\items\Belt.png" />
+    <Resource Include="Images\cstyle\items\BF.png" />
+    <Resource Include="Images\cstyle\items\blade_of_the_ruined_king.png" />
+    <Resource Include="Images\cstyle\items\Bow.png" />
+    <Resource Include="Images\cstyle\items\Cape.png" />
+    <Resource Include="Images\cstyle\items\darkin.png" />
+    <Resource Include="Images\cstyle\items\force_of_nature.png" />
+    <Resource Include="Images\cstyle\items\frozen_mallet.png" />
+    <Resource Include="Images\cstyle\items\knights_vow.png" />
+    <Resource Include="Images\cstyle\items\Rod.png" />
+    <Resource Include="Images\cstyle\items\runaans_hurricane.png" />
+    <Resource Include="Images\cstyle\items\Spatula.png" />
+    <Resource Include="Images\cstyle\items\Tear.png" />
+    <Resource Include="Images\cstyle\items\Vest.png" />
+    <Resource Include="Images\cstyle\items\youmuus_ghostblade.png" />
+    <Resource Include="Images\cstyle\items\yuumi.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\riversprite.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Cursor\Normal.cur" />
-    <Resource Include="Cursor\Pointer.cur" />
+    <Resource Include="Images\cstyle\BeltPM.png" />
+    <Resource Include="Images\cstyle\BFPM.png" />
+    <Resource Include="Images\cstyle\BowPM.png" />
+    <Resource Include="Images\cstyle\CapePM.png" />
+    <Resource Include="Images\cstyle\RodPM.png" />
+    <Resource Include="Images\cstyle\SpatulaPM.png" />
+    <Resource Include="Images\cstyle\TearPM.png" />
+    <Resource Include="Images\cstyle\VestPM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Cursor\LoLNormal.cur" />
+    <Resource Include="Cursor\LoLPointer.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cstyle\TiersIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cstyle\Origins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cstyle\Classes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cursor\LoLHover.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cstyle\items\bloodthirster.png" />
+    <Resource Include="Images\cstyle\items\Guardian_Angel.png" />
+    <Resource Include="Images\cstyle\items\Hextech_Gunblade.png" />
+    <Resource Include="Images\cstyle\items\Infinity_Edge.png" />
+    <Resource Include="Images\cstyle\items\Spear_Of_Shojin.png" />
+    <Resource Include="Images\cstyle\items\Sword_Of_The_Divine.png" />
+    <Resource Include="Images\cstyle\items\Zekes_Herald.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cstyle\items\cursed_blade.png" />
+    <Resource Include="Images\cstyle\items\dragons_claw.png" />
+    <Resource Include="Images\cstyle\items\frozen_heart.png" />
+    <Resource Include="Images\cstyle\items\guinsoos_rageblade.png" />
+    <Resource Include="Images\cstyle\items\hush.png" />
+    <Resource Include="Images\cstyle\items\ionic_spark.png" />
+    <Resource Include="Images\cstyle\items\locket_of_the_iron_solari.png" />
+    <Resource Include="Images\cstyle\items\ludens_echo.png" />
+    <Resource Include="Images\cstyle\items\morellonomicon.png" />
+    <Resource Include="Images\cstyle\items\phantom_dancer.png" />
+    <Resource Include="Images\cstyle\items\rabadons_deathcap.png" />
+    <Resource Include="Images\cstyle\items\rapid_firecannon.png" />
+    <Resource Include="Images\cstyle\items\redemption.png" />
+    <Resource Include="Images\cstyle\items\red_buff.png" />
+    <Resource Include="Images\cstyle\items\seraphs_embrace.png" />
+    <Resource Include="Images\cstyle\items\statikk_shiv.png" />
+    <Resource Include="Images\cstyle\items\sword_breaker.png" />
+    <Resource Include="Images\cstyle\items\thornmail.png" />
+    <Resource Include="Images\cstyle\items\titanic_hydra.png" />
+    <Resource Include="Images\cstyle\items\warmogs_armor.png" />
+    <Resource Include="Images\cstyle\items\zephyr.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
